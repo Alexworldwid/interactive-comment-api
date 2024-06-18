@@ -1,0 +1,21 @@
+{
+  "name": "new-express-project",
+  "version": "1.0.0",
+  "description": "practicing vercel deployment",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon api/index.mjs",
+    "start": "node api/index.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "mongoose": "^8.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2"
+  },
+  "type": "module"
+}
