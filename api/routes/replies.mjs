@@ -31,8 +31,7 @@ router.post('/api/comment/:commentId/replies', createReplies, validate, async (r
 router.patch('/api/comment/:commentId/:replyId', commentIdParam, replyIdParam, validate, async (request, response) => {
     const commentId = request.params.commentId;
     const replyId = request.params.replyId;
-    const data = matchedData(request)
-    const { content } = data;
+    const { content } = request.body;
 
     try {
         const comment = await Comments.findById(commentId);
@@ -57,8 +56,7 @@ router.patch('/api/comment/:commentId/:replyId', commentIdParam, replyIdParam, v
 // patch reply score 
 router.patch('/api/comment/:commentId/:replyId/score', commentIdParam, replyIdParam, updateScore, validate, async (request, response) => {
     const { commentId, replyId } = request.params;
-    const data = matchedData(request);
-    const { score } = data;
+    const { score } = matchedData(request);
 
     try {
         const comment = await Comments.findById(commentId);
