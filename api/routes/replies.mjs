@@ -31,7 +31,7 @@ router.post('/api/comment/:commentId/replies', createReplies, validate, async (r
 router.patch('/api/comment/:commentId/:replyId', commentIdParam, replyIdParam, validate, async (request, response) => {
     const commentId = request.params.commentId;
     const replyId = request.params.replyId;
-    const { content } = matchedData(request);
+    const { content } = request.body;
 
     try {
         const comment = await Comments.findById(commentId);

@@ -37,9 +37,9 @@ router.post('/api/comment', createComment, validate, async (request, response) =
 router.patch('/api/comment/:commentId', commentIdParam, validate, async (request, response) => {
   try {
     const commentId = request.params.commentId;
-    const updateData = matchedData(request);
+    const { content } = request.body;
 
-    const updatedComment = await Comments.findByIdAndUpdate(commentId, {$set: updateData}, {new: true, runValidators: true});
+    const updatedComment = await Comments.findByIdAndUpdate(commentId, {$set: content}, {new: true, runValidators: true});
 
     if (!updatedComment) return response.status(404).send('comment not found');
 
