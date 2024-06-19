@@ -53,7 +53,8 @@ router.patch('/api/comment/:commentId', commentIdParam, validate, async (request
 
 // patch comment.score 
 router.patch('/api/comment/:commentId/score', commentIdParam, updateScore, validate, async (request, response) => {
-  const { score } = request.body;
+  const data = matchedData(request)
+  const { score } = data;
   const { commentId } = request.params;
 
   try {
