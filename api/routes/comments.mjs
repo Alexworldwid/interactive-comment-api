@@ -39,14 +39,14 @@ router.patch('/api/comment/:commentId', commentIdParam, validate, async (request
     const commentId = request.params.commentId;
     const { content } = request.body;
 
-    const updatedComment = await Comments.findByIdAndUpdate(commentId, {$set: content}, {new: true, runValidators: true});
+    const updatedComment = await Comments.findByIdAndUpdate(commentId, {$set: {content} }, {new: true, runValidators: true});
 
     if (!updatedComment) return response.status(404).send('comment not found');
 
     return response.status(200).send(updatedComment);
 
   } catch (error) {
-    response.status(400).send(`Error updating comment: + ${error.message}`);
+    response.status(400).send(`Error updating comment: ${error.message}`);
   }
 })
 
