@@ -10,7 +10,7 @@ const app = express();
 
 // CORS middleware
 app.use(cors({
-    origin: 'http://localhost:3000' 
+    origin: 'https://interactive-comment-section-frontend-mentor.vercel.app' 
 }));
   
 
